@@ -20,7 +20,6 @@ export default function ProgressBar({ skipQuestion, timer }) {
       if (timeRemaining <= 0) {
         console.log("interval ended");
         clearInterval(interval);
-        return;
       }
       setTimeRemaning((prevTime) => prevTime - 100);
     }, 100);
