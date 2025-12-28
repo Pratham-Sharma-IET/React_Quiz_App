@@ -16,9 +16,9 @@ export default function ProgressBar({ skipQuestion, timer }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log("interval");
+      // console.log("interval");
       if (timeRemaining <= 0) {
-        console.log("interval ended");
+        // console.log("interval ended");
         clearInterval(interval);
       }
       setTimeRemaning((prevTime) => prevTime - 100);
