@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import QuestionBank from "../questions.js";
 import ProgressBar from "./ProgressBar.jsx";
 import { Answers } from "./Answers.jsx";
+import { Summary } from "./Summary.jsx";
 
 export default function Quiz() {
   const Timer = 20000;
@@ -30,7 +31,7 @@ export default function Quiz() {
         setTimeout(() => {
           setAnswerState("");
         }, 1000);
-      }, 1000);
+      }, 500);
     },
     [activeQuestionIndex]
   );
@@ -41,11 +42,7 @@ export default function Quiz() {
   );
 
   if (QuestionsCompleted) {
-    return (
-      <div id="summary">
-        <h2>Quiz Completed</h2>
-      </div>
-    );
+    return <Summary answerList={answeredQuestion} />;
   }
 
   return (
@@ -58,7 +55,7 @@ export default function Quiz() {
         />
         <h2>{QuestionBank[activeQuestionIndex].text}</h2>
         <Answers
-          key={QuestionBank[activeQuestionIndex].answers}
+          key={QuestionBank[activeQuestionIndex].text}
           answerList={QuestionBank[activeQuestionIndex].answers}
           answerState={answerState}
           selectedAnswer={answeredQuestion[answeredQuestion.length - 1]}

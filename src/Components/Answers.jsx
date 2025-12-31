@@ -29,7 +29,15 @@ export function Answers({ answerList, selectedAnswer, answerState, onSubmit }) {
 
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSubmit(answer)} className={cssClass}>
+            <button
+              onClick={() => onSubmit(answer)}
+              className={cssClass}
+              disabled={
+                answerState === "answered" ||
+                answerState === "correct" ||
+                answerState === "wrong"
+              }
+            >
               {answer}
             </button>
           </li>
